@@ -1,0 +1,35 @@
+# Site settings
+title: "Stone's Throw from the Beach | Hilton Head Island"
+description: "Your perfect beach getaway - Steps from pristine Folly Field Beach in Hilton Head Island, SC"
+baseurl: ""
+url: ""
+
+# Build settings
+markdown: kramdown
+theme: null
+plugins:
+  - jekyll-seo-tag
+
+# SEO
+author: "Stone's Throw Vacation Rental"
+locale: "en_US"
+
+# Social
+twitter:
+  card: summary_large_image
+
+# Property Info
+property:
+  name: "Stone's Throw from the Beach"
+  tagline: "Your Hilton Head Island Escape"
+  location: "Hilton Head Island, South Carolina"
+  guests: 5
+  bedrooms: 2
+  bathrooms: 1.5
+  beds: 4
+
+# Contact
+contact:
+  email: "nedkoh@gmail.com"
+  phone: "404.374.6726"
+  booking_url: "https://www.houfy.com/lodging/stones-throw-from-the-beach/79850"
