@@ -1,8 +1,8 @@
 # Site settings
 title: "Stone's Throw from the Beach | Hilton Head Island"
 description: "Your perfect beach getaway - Steps from pristine Folly Field Beach in Hilton Head Island, SC"
-baseurl: ""
-url: ""
+baseurl: "/hiltonhead.beach"
+url: "https://nedkoh.github.io"
 
 # Build settings
 markdown: kramdown
