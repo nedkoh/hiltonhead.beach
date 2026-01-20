@@ -4,14 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="{{ site.description }}">
-  <meta name="keywords" content="Hilton Head Island, vacation rental, beach house, Folly Field Beach, South Carolina, beach getaway, family vacation">
+  <meta name="keywords" content="{{ site.keywords }}">
   <meta name="author" content="{{ site.author }}">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 
-  <!-- Open Graph / Social -->
-  <meta property="og:title" content="{{ site.title }}">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="{{ page.title | default: site.title }}">
   <meta property="og:description" content="{{ site.description }}">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}{{ site.og_image }}">
   <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="{{ site.property.name }}">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page.title | default: site.title }}">
+  <meta name="twitter:description" content="{{ site.description }}">
+  <meta name="twitter:image" content="{{ site.url }}{{ site.og_image }}">
+
+  <!-- Geo Tags for Local SEO -->
+  <meta name="geo.region" content="US-SC">
+  <meta name="geo.placename" content="Hilton Head Island">
+  <meta name="geo.position" content="32.2034;-80.6929">
+  <meta name="ICBM" content="32.2034, -80.6929">
 
   <title>{{ page.title | default: site.title }}</title>
 
@@ -24,6 +41,54 @@
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 
   {% seo %}
+
+  <!-- Schema.org Structured Data for Vacation Rental -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "name": "{{ site.property.name }}",
+    "description": "{{ site.description }}",
+    "url": "{{ site.url }}",
+    "image": "{{ site.url }}{{ site.og_image }}",
+    "telephone": "+1{{ site.contact.phone | remove: '.' }}",
+    "email": "{{ site.contact.email }}",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Hilton Head Island",
+      "addressRegion": "SC",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 32.2034,
+      "longitude": -80.6929
+    },
+    "amenityFeature": [
+      {"@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Free Parking", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Pool Access", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Air Conditioning", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Kitchen", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Washer/Dryer", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "BBQ Grill", "value": true}
+    ],
+    "numberOfRooms": 2,
+    "petsAllowed": false,
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "76"
+    },
+    "potentialAction": {
+      "@type": "ReserveAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "{{ site.contact.booking_url }}"
+      }
+    }
+  }
+  </script>
 </head>
 <body>
   <nav class="navbar">
@@ -32,6 +97,7 @@
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#amenities">Amenities</a></li>
+        <li><a href="#golf">Golf</a></li>
         <li><a href="#location">Location</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="{{ site.contact.booking_url }}" class="btn btn-nav" target="_blank">Book Now</a></li>

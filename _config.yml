@@ -1,8 +1,8 @@
 # Site settings
-title: "Stone's Throw from the Beach | Hilton Head Island"
-description: "Your perfect beach getaway - Steps from pristine Folly Field Beach in Hilton Head Island, SC"
-baseurl: "/hiltonhead.beach"
-url: "https://nedkoh.github.io"
+title: "Hilton Head Island Vacation Rental | Stone's Throw from the Beach"
+description: "Book our 2-bedroom Hilton Head Island vacation rental just steps from Folly Field Beach. Perfect for family beach vacations & golf getaways near 30+ courses. Walk to beach, pool access, free parking. Book direct and save!"
+baseurl: ""
+url: "https://hiltonhead.beach"
 
 # Build settings
 markdown: kramdown
@@ -13,6 +13,10 @@ plugins:
 # SEO
 author: "Stone's Throw Vacation Rental"
 locale: "en_US"
+keywords: "Hilton Head vacation rental, Hilton Head Island rental, Folly Field Beach rental, Hilton Head beach house, Hilton Head golf vacation, family vacation Hilton Head, short term rental Hilton Head SC, beach villa Hilton Head, Hilton Head condo rental, vacation home near beach"
+
+# Open Graph
+og_image: "/assets/images/301be7154fdfa360a3aa476a92437ce5.webp"
 
 # Social
 twitter:
@@ -27,6 +31,19 @@ property:
   bedrooms: 2
   bathrooms: 1.5
   beds: 4
+  distance_to_beach: "0.2 miles"
+  walk_time: "5 minutes"
+
+# Nearby Golf Courses
+golf:
+  - name: "Port Royal Golf Club"
+    distance: "5 min drive"
+  - name: "Palmetto Dunes Golf"
+    distance: "10 min drive"
+  - name: "Shipyard Golf Club"
+    distance: "10 min drive"
+  - name: "Harbour Town Golf Links"
+    distance: "20 min drive"
 
 # Contact
 contact:
