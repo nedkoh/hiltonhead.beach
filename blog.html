@@ -1,0 +1,60 @@
+---
+layout: default
+title: "Hilton Head Island Travel Blog | Tips, Guides & Local Insights"
+description: "Discover the best of Hilton Head Island with our travel blog. Expert tips on beaches, golf, dining, family activities, and vacation planning."
+---
+
+<section class="blog-hero">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Travel Blog</span>
+      <h1>Hilton Head Island Guides & Tips</h1>
+      <p class="blog-hero-subtitle">Your insider's guide to the best beaches, golf courses, restaurants, and activities on Hilton Head Island</p>
+    </div>
+  </div>
+</section>
+
+<section class="blog-listing">
+  <div class="container">
+    <div class="blog-grid">
+      {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+      {% for post in sorted_posts %}
+      <article class="blog-card">
+        {% if post.image %}
+        <a href="{{ post.url }}" class="blog-card-image">
+          <img src="{{ post.image }}" alt="{{ post.title }}" loading="lazy">
+        </a>
+        {% endif %}
+        <div class="blog-card-content">
+          <div class="blog-card-meta">
+            <span class="blog-card-category">{{ post.category | default: "Travel Guide" }}</span>
+            <span class="blog-card-date">{{ post.date | date: "%B %d, %Y" }}</span>
+          </div>
+          <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+          <p>{{ post.description | default: post.excerpt | strip_html | truncate: 150 }}</p>
+          <a href="{{ post.url }}" class="blog-card-link">Read More &rarr;</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Ready for Your Hilton Head Adventure?</h2>
+      <p>Book your stay at Stone's Throw from the Beach and experience the best of the island.</p>
+      <div class="cta-buttons">
+        <a href="{{ site.contact.booking_url }}" class="btn btn-primary btn-large" target="_blank">Book Your Stay</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Mark navbar as scrolled on blog pages
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.navbar').classList.add('scrolled');
+  });
+</script>
