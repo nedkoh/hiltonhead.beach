@@ -55,7 +55,7 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     "headline": "{{ page.title }}",
     "description": "{{ page.description | default: page.excerpt | strip_html | truncate: 160 }}",
     "image": "{{ page.image | default: site.og_image | prepend: site.url }}",
@@ -188,6 +188,31 @@
     document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
       document.querySelector('.nav-links').classList.toggle('active');
       this.classList.toggle('active');
+    });
+
+    // GA4 Key Events Tracking
+    document.addEventListener('click', function(e) {
+      var link = e.target.closest('a');
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      if (href.indexOf('houfy.com') !== -1) {
+        gtag('event', 'booking_click', {
+          event_category: 'conversion',
+          event_label: link.textContent.trim()
+        });
+      }
+      if (href.indexOf('tel:') === 0) {
+        gtag('event', 'phone_click', {
+          event_category: 'conversion',
+          event_label: href
+        });
+      }
+      if (href.indexOf('mailto:') === 0) {
+        gtag('event', 'email_click', {
+          event_category: 'conversion',
+          event_label: href
+        });
+      }
     });
   </script>
 </body>

@@ -11,15 +11,15 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{{ site.description }}">
-  <meta name="keywords" content="{{ site.keywords }}">
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <meta name="keywords" content="{{ page.keywords | default: site.keywords }}">
   <meta name="author" content="{{ site.author }}">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="{{ page.title | default: site.title }}">
-  <meta property="og:description" content="{{ site.description }}">
+  <meta property="og:description" content="{{ page.description | default: site.description }}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:image" content="{{ site.url }}{{ site.og_image }}">
@@ -29,7 +29,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ page.title | default: site.title }}">
-  <meta name="twitter:description" content="{{ site.description }}">
+  <meta name="twitter:description" content="{{ page.description | default: site.description }}">
   <meta name="twitter:image" content="{{ site.url }}{{ site.og_image }}">
 
   <!-- Geo Tags for Local SEO -->
@@ -176,6 +176,34 @@
         navbar.classList.add('scrolled');
       } else {
         navbar.classList.remove('scrolled');
+      }
+    });
+
+    // GA4 Key Events Tracking
+    document.addEventListener('click', function(e) {
+      var link = e.target.closest('a');
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      // Track booking button clicks
+      if (href.indexOf('houfy.com') !== -1) {
+        gtag('event', 'booking_click', {
+          event_category: 'conversion',
+          event_label: link.textContent.trim()
+        });
+      }
+      // Track phone call clicks
+      if (href.indexOf('tel:') === 0) {
+        gtag('event', 'phone_click', {
+          event_category: 'conversion',
+          event_label: href
+        });
+      }
+      // Track email clicks
+      if (href.indexOf('mailto:') === 0) {
+        gtag('event', 'email_click', {
+          event_category: 'conversion',
+          event_label: href
+        });
       }
     });
   </script>

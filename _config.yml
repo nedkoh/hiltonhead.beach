@@ -7,8 +7,10 @@ url: "https://beachhiltonhead.com"
 # Build settings
 markdown: kramdown
 theme: null
+permalink: /blog/:title/
 plugins:
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 # SEO
 author: "Stone's Throw Vacation Rental"
